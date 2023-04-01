@@ -6325,8 +6325,7 @@ textarea.form-control-lg {
 }
 
 .overflow-scroll {
-  overflow-x: hidden !important;;
-  overflow-y: scroll !important;
+  overflow: scroll !important;
 }
 
 .d-inline {

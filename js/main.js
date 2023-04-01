@@ -24,7 +24,7 @@ let result = '';
 
 function displayNumbers() {
     if(this.textContent === '.' && currentNumber.innerHTML.includes('.')) return;
-    if(this.textContent === '.' && currentNumber.innerHTML === '') return currentNumber.innerHTML = '.0';
+    if(this.textContent === '.' && currentNumber.innerHTML === '') return currentNumber.innerHTML = '0.';
 
     console.log( currentNumber.innerHTML)
     currentNumber.innerHTML += this.textContent;
@@ -34,8 +34,6 @@ function operate(){
     if(currentNumber.innerHTML == '' && this.textContent === '-'){
         currentNumber.innerHTML = '-';
         return;
-    }else if(currentNumber.innerHTML == '' && this.textContent === '√'){
-        previousNumber.innerHTML = '√';
     }else if(currentNumber.innerHTML === ''){
         return;
     }
@@ -52,36 +50,37 @@ function operate(){
 
 function showResults() {
     if(this.textContent === '='){
-        if(mathSign.innerHTML === '+'){
-            result = parseFloat(previousNumber.innerHTML) + parseFloat(currentNumber.innerHTML);
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
+
+        let a = currentNumber.innerHTML;
+        let b = previousNumber.innerHTML;
+        let operator = mathSign.innerHTML;
+
+        switch (operator){
+            case '+':
+                result = parseFloat(b) + parseFloat(a);
+                break;
+            case '-':
+                result = parseFloat(b) - parseFloat(a);
+                break;
+            case 'X':
+                result = parseFloat(b) * parseFloat(a);
+                break;
+            case ':':
+                result = parseFloat(b) / parseFloat(a);
+                break;
+            case '2^':
+                result = parseFloat(b) ** parseFloat(a);
+                break;
+            case '√':
+                result = Math.sqrt(parseFloat(b));
+                break;
         }
-        if(mathSign.innerHTML === '-'){
-            result = parseFloat(previousNumber.innerHTML) - parseFloat(currentNumber.innerHTML);
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
+        if(operator === "√"){
+            history(a,b,operator,result);
+        }else{
+            history(b,a,operator,result);
         }
-        if(mathSign.innerHTML === 'X'){
-            result = parseFloat(previousNumber.innerHTML)*parseFloat(currentNumber.innerHTML);
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
-        }
-        if(mathSign.innerHTML === ':'){
-            result =  parseFloat(previousNumber.innerHTML)/parseFloat(currentNumber.innerHTML);
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
-        }
-        if(mathSign.innerHTML === 'x2'){
-            result = Math.pow(parseFloat(previousNumber.innerHTML),2);
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
-        }
-        if(mathSign.innerHTML === '√'){
-            result = Math.sqrt(parseFloat(currentNumber.innerHTML));
-            history(previousNumber.innerHTML,currentNumber.innerHTML,mathSign.innerHTML,result);
-            clearScreen();
-        }
+        clearScreen();
         currentNumber.innerHTML = result;
     }
 }
@@ -105,13 +104,16 @@ function history(pre,cur,math,res){
 }
 
 function clearHistory(){
-    calcHistory.innerHTML = '';
+    calcHistory.forEach((el)=>{
+        el.innerHTML = '';
+    })
 }
 
 // Monitoring the click event
 
 mathSigns.forEach((el) => {
     el.addEventListener('click',operate)
+
 });
 
 equalButton.addEventListener('click',showResults)
