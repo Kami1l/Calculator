@@ -41,9 +41,9 @@ function operate(){
     }
 
 
-    // if(mathSign.innerHTML !== ''){
-    //     showResults();
-    // }
+    if(mathSign.innerHTML !== ''){
+        showResults();
+    }
 
     previousNumber.innerHTML = currentNumber.innerHTML;
     mathSign.innerHTML = this.textContent;
