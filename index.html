@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head> 
+<body class="page bg-dark position-relative" style="height: 100vh;">
+    <button class="btn btn-light d-block d-md-none position-absolute" style="z-index: 1; margin:5px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">History</button>
+    <div class="offcanvas offcanvas-end w-100" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">History</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="historyContent offcanvas-body">
+        </div>
+    </div>
+    
+    <div style="height: 100%; position: relative;" class="calculator container-fluid text-light " >
+        <div  class="topSide row h-25 ">
+            <div class="screen col p-5 d-flex justify-content-end">
+                <div class="fs-1 h1 previousNumber"></div>
+                <div class="fs-1 h1 mathSign"></div>
+                <div class="fs-1 h1 currentNumber"></div>
+            </div>
+        </div>
+        <div class="bottomSide row border border-light h-75" >
+            <div class="container col p-2 fs-1 keyboard" id="keyboard">
+                <div style="height: 20%;" class="row m-0 ">
+                    <div class="col p-0 m-0"><button class="clear btn btn-outline-light w-100 h-100">C</button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100 ">x<sup>2</sup></button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100 ">:</button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100">X</button></div>
+                </div>
+                <div style="height: 20%;" class="row m-0 ">
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">7</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">8</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">9</button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100">-</button></div>
+                </div>
+                <div style="height: 20%;" class="row m-0 ">
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">4</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">5</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">6</button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100">+</button></div>
+                </div>
+                <div style="height: 20%;" class="row m-0 ">
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">1</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">2</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">3</button></div>
+                    <div class="col p-0 m-0"><button class="equalSigns btn btn-outline-light w-100 h-100">=</button></div>
+                </div>
+                <div style="height: 20%;" class="row m-0 ">
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">0</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">00</button></div>
+                    <div class="col p-0 m-0"><button class="number btn btn-outline-light w-100 h-100">.</button></div>
+                    <div class="col p-0 m-0"><button class="mathSigns btn btn-outline-light w-100 h-100">√</button></div>
+                </div>
+            </div>
+            <div  class="history container col-4 d-none d-md-block overflow-scroll h-100" >
+                <div class="clearHistory btn btn-outline-light position-absolute m-2 lh-1">Clear</div>
+                <div class="historyContent mt-5 m "></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
