@@ -40,7 +40,6 @@ function operate(){
         return;
     }
 
-
     if(mathSign.innerHTML !== ''){
         showResults();
     }
